@@ -8,7 +8,7 @@ previous_retarget_timestamp = json.loads(requests.get(f'https://mempool.space/ap
 ts = time.time()
 
 diff = ts - previous_retarget_timestamp
-blocksInEpoch = (lastblock) % 2016
+blocksInEpoch = lastblock % 2016
 estimatedBlocks = round(diff / 60 / 10)
 difficultyChange = (blocksInEpoch - (diff / 60 / 10)) / blocksInEpoch * 100
 difficultyChange2 = (600 / (diff / blocksInEpoch ) -1) * 100
