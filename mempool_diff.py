@@ -14,6 +14,6 @@ difficultyChange = (blocksInEpoch - (diff / 60 / 10)) / blocksInEpoch * 100
 difficultyChange2 = (600 / (diff / blocksInEpoch ) -1) * 100
 
 print('last block: {}'.format(lastblock))
-print(difficultyChange)
-print(difficultyChange2)
+print('{:.2f} %'.format(difficultyChange))
+print('{:.2f} %'.format(difficultyChange2))
 
