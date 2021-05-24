@@ -29,4 +29,5 @@ parse_json = json.loads(response.text)
 hashrate = int(parse_json['data']['hashrate_24h'], 10)
 prob = target / 2**256
 probsec = 1 / (prob * hashrate)
-print('aktuální (24h průměr) hashrate je {} hash/s ({:.2f} EH/s); vytěžení zadaného bloky by NYNÍ trvalo průměrně {:.0f} sekund ({:.2f} minut)\n'.format(hashrate, hashrate/10**18, probsec, probsec/60))
+print('aktuální (24h průměr) hashrate je {} hash/s ({:.2f} Eh/s); vytěžení zadaného bloky by NYNÍ trvalo průměrně {:.2f} sekund ({:.2f} minut)\n'.format(hashrate, hashrate/10**18, probsec, probsec/60))
+
