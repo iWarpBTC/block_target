@@ -10,10 +10,25 @@ ts = time.time()
 diff = ts - previous_retarget_timestamp
 blocksInEpoch = lastblock % 2016
 estimatedBlocks = round(diff / 60 / 10)
-difficultyChange = (blocksInEpoch - (diff / 60 / 10)) / blocksInEpoch * 100
-difficultyChange2 = (600 / (diff / blocksInEpoch ) -1) * 100
+difficultyChangeOld = (blocksInEpoch - (diff / 60 / 10)) / blocksInEpoch * 100
+difficultyChange = (600 / (diff / blocksInEpoch ) -1) * 100
 
-print('last block: {}'.format(lastblock))
-print('{:.2f} %'.format(difficultyChange))
-print('{:.2f} %'.format(difficultyChange2))
+green = 0
+red = 0
+
+if (blocksInEpoch >= estimatedBlocks):
+    base = estimatedBlocks / 2016 * 100
+    green = (blocksInEpoch - estimatedBlocks) / 2016 * 100
+else:
+    base = blocksInEpoch / 2016 * 100
+    red = min((estimatedBlocks - blocksInEpoch) / 2016 * 100, 100 - base)
+
+print('Poslední blok: {}'.format(lastblock))
+print()
+print('Stará předpověď: {:.2f} %'.format(difficultyChangeOld))
+print()
+print('Nová předpověď: {:.2f} %'.format(difficultyChange))
+print('Základ: {:.2f} %'.format(base))
+print('Zelený: {:.2f} %'.format(green))
+print('Červený: {:.2f} %'.format(red))
 
